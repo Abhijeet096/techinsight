@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Development - 24 Complete Articles</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 40px 0;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            color: white;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+            color: white;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .article-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .article-number {
+            display: inline-block;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .article-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+            text-decoration: none;
+        }
+
+        .article-description {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .article-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .tag {
+            background: #f0f0f0;
+            color: #555;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            text-decoration: none;
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        .difficulty {
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .beginner {
+            background: #e8f5e8;
+            color: #2d5a2d;
+        }
+
+        .intermediate {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .advanced {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .categories {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .category-filter {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .category-filter:hover, .category-filter.active {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .search-box {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .search-input {
+            width: 100%;
+            max-width: 400px;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            outline: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-input::placeholder {
+            color: #999;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .categories {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        .article-link{
+            text-decoration:none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Web Development Mastery</h1>
+            <p>Complete guide to modern web development with 24 comprehensive articles covering everything from basics to advanced concepts</p>
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-number">24</span>
+                    <span>Articles</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">100+</span>
+                    <span>Hours Content</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">∞</span>
+                    <span>Knowledge</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="search-box">
+            <input type="text" class="search-input" placeholder="Search articles..." id="searchInput">
+        </div>
+
+        <div class="categories">
+            <a href="#" class="category-filter active" onclick="filterCategory('all')">All</a>
+            <a href="#" class="category-filter" onclick="filterCategory('frontend')">Frontend</a>
+            <a href="#" class="category-filter" onclick="filterCategory('backend')">Backend</a>
+            <a href="#" class="category-filter" onclick="filterCategory('fullstack')">Full Stack</a>
+            <a href="#" class="category-filter" onclick="filterCategory('tools')">Tools</a>
+        </div>
+       
+        <div class="articles-grid" id="articlesGrid">
+            <!-- Article 1 -->
+              <a href="web_article1.html" class="article-link">
+            <div class="article-card" data-category="frontend">
+                <div class="article-number">Article 1</div>
+                <h2 class="article-title">HTML5 Fundamentals & Semantic Elements</h2>
+                <p class="article-description">Master the building blocks of web development with HTML5 semantic elements, forms, and modern best practices.</p>
+                <div class="article-tags">
+                    <span class="tag">HTML5</span>
+                    <span class="tag">Semantic</span>
+                    <span class="tag">Accessibility</span>
+                </div>
+                <div class="article-meta">
+                    <span>15 min read</span>
+                    <span class="difficulty beginner">Beginner</span>
+                </div>
+            </div>
+            </a>
+
+            <!-- Article 2 -->
+              <a href="web_article2.html" class="article-link">
+              
+            <div class="article-card" data-category="frontend">
+                <div class="article-number">Article 2</div>
+                <h2 class="article-title">CSS3 Advanced Layouts & Flexbox</h2>
+                <p class="article-description">Create responsive layouts with CSS Grid, Flexbox, and modern CSS techniques for professional designs.</p>
+                <div class="article-tags">
+                    <span class="tag">CSS3</span>
+                    <span class="tag">Flexbox</span>
+                    <span class="tag">Grid</span>
+                </div>
+                <div class="article-meta">
+                    <span>20 min read</span>
+                    <span class="difficulty intermediate">Intermediate</span>
+                </div>
+            </div>
+        </a>
+
+            <!-- Article 3 -->
+            <div class="article-card" data-category="frontend">
+                <div class="article-number">Article 3</div>
+                <h2 class="article-title">JavaScript ES6+ Modern Features</h2>
+                <p class="article-description">Explore arrow functions, destructuring, async/await, modules, and other ES6+ features for modern JavaScript development.</p>
+                <div class="article-tags">
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">ES6+</span>
+                    <span class="tag">Modern JS</span>
+                </div>
+                <div class="article-meta">
+                    <span>25 min read</span>
+                    <span class="difficulty intermediate">Intermediate</span>
+                </div>
+            </div>
+
+            <!-- Article 4 -->
+            <div class="article-card" data-category="frontend">
+                <div class="article-number">Article 4</div>
+                <h2 class="article-title">React.js Complete Guide</h2>
+                <p class="article-description">Build dynamic user interfaces with React hooks, components, state management, and modern React patterns.</p>
+                <div class="article-tags">
+                    <span class="tag">React</span>
+                    <span class="tag">Hooks</span>
+                    <span class="tag">Components</span>
+                </div>
+                <div class="article-meta">
+                    <span>30 min read</span>
+                    <span class="difficulty intermediate">Intermediate</span>
+                </div>
+            </div>
+
+            <!-- Article 5 -->
+            <div class="article-card" data-category="frontend">
+                <div class="article-number">Article 5</div>
+                <h2 class="article-title">Vue.js 3 Composition API</h2>
+                <p class="article-description">Learn Vue.js 3 with Composition API, reactive data, computed properties, and building scalable applications.</p>
+                <div class="article-tags">
+                    <span class="tag">Vue.js</span>
+                    <span class="tag">Composition API</span>
+                    <span class="tag">Reactivity</span>
+                </div>
+                <div class="article-meta">
+                    <span>28 min read</span>
+                    <span class="difficulty intermediate">Intermediate</span>
+                </div>
+            </div>
+
+            <!-- Article 6 -->
+            <div class="article-card" data-category="frontend">
+                <div class="article-number">Article 6</div>
+                <h2 class="article-title">Angular Framework Deep Dive</h2>
+                <p class="article-description">Master Angular with TypeScript, components, services, routing, and enterprise-level application development.</p>
+                <div class="article-tags">
+                    <span class="tag">Angular</span>
+                    <span class="tag">TypeScript</span>
+                    <span class="tag">Enterprise</span>
+                </div>
+                <div class="article-meta">
+                    <span>35 min read</span>
+                    <span class="difficulty advanced">Advanced</span>
+                </div>
+            </div>
+
+            <!-- Article 7 -->
+            <div class="article-card" data-category="backend">
+                <div class="article-number">Article 7</div>
+                <h2 class="article-title">Node.js & Express.js Backend</h2>
+                <p class="article-description">Build robust backend applications with Node.js, Express.js, middleware, and RESTful API development.</p>
+                <div class="article-tags">
+                    <span class="tag">Node.js</span>
+                    <span class="tag">Express</span>
+                    <span class="tag">REST API</span>
+                </div>
+                <div class="article-meta">
+                    <span>32 min read</span>
+                    <span class="difficulty intermediate">Intermediate</span>
+                </div>
+            </div>
+
+            <!-- Article 8 -->
+            <div class="article-card" data-category="backend">
+                <div class="article-number">Article 8</div>
+                <h2 class="article-title">Database Design & MongoDB</h2>
+                <p class="article-description">Learn database design principles, MongoDB operations, data modeling, and performance optimization.</p>
+                <div class="article-tags">
+                    <span class="tag">MongoDB</span>
+                    <span class="tag">Database</span>
+                    <span class="tag">NoSQL</span>
+                </div>
+                <div class="article-meta">
+                    <span>27 min read</span>
+                    <span class="difficulty intermediate">Intermediate</span>
+                </div>
+            </div>
+
+            <!-- Article 9 -->
+            <div class="article-card" data-category="backend">
+                <div class="article-number">Article 9</div>
+                <h2 class="article-title">RESTful API Design & Authentication</h2>
+                <p class="article-description">Create secure RESTful APIs with proper authentication, authorization, JWT tokens, and best practices.</p>
+                <div class="article-tags">
+                    <span class="tag">REST API</span>
+                    <span class="tag">JWT</span>
+                    <span class="tag">Security</span>
+                </div>
+                <div class="article-meta">
+                    <span>30 min read</span>
+                    <span class="difficulty advanced">Advanced</span>
+                </div>
+            </div>
+
+            <!-- Article 10 -->
+            <div class="article-card" data-category="backend">
+                <div class="article-number">Article 10</div>
+                <h2 class="article-title">GraphQL API Development</h2>
+                <p class="article-description">Build flexible GraphQL APIs with queries, mutations, resolvers, and real-time subscriptions.</p>
+                <div class="article-tags">
+                    <span class="tag">GraphQL</span>
+                    <span class="tag">Apollo</span>
+                    <span class="tag">Subscriptions</span>
+                </div>
+                <div class="article-meta">
+                    <span>33 min read</span>
+                    <span class="difficulty advanced">Advanced</span>
+                </div>
+            </div>
+
+            <!-- Article 11 -->
+            <div class="article-card" data-category="fullstack">
+                <div class="article-number">Article 11</div>
+                <h2 class="article-title">Full-Stack MERN Application</h2>
+                <p class="article-description">Build complete applications using MongoDB, Express.js, React, and Node.js with deployment strategies.</p>
+                <div class="article-tags">
+                    <span class="tag">MERN</span>
+                    <span class="tag">Full Stack</span>
+                    <span class="tag">Deployment</span>
+                </div>
+                <div class="article-meta">
+                    <span>45 min read</span>
+                    <span class="difficulty advanced">Advanced</span>
+                </div>
+            </div>
+
+            <!-- Article 12 -->
+            <div class="article-card" data-category="fullstack">
+                <div class="article-number">Article 12</div>
+                <h2 class="article-title">Next.js Full-Stack Framework</h2>
+                <p class="article-description">Master Next.js with server-side rendering, static generation, API routes, and modern React development.</p>
+                <div class="article-tags">
+                    <span class="tag">Next.js</span>
+                    <span class="tag">SSR</span>
+                    <span class="tag">Static Generation</span>
+                </div>
+                <div class="article-meta">
+                    <span>38 min read</span>
+                    <span class="difficulty advanced">Advanced</span>
+                </div>
+            </div>
+
+            <!-- Article 13 -->
+            <div class="article-card" data-category="tools">
+                <div class="article-number">Article 13</div>
+                <h2 class="article-title">Git & GitHub Workflow</h2>
+                <p class="article-description">Master version control with Git, branching strategies, pull requests, and collaborative development workflows.</p>
+                <div class="article-tags">
+                    <span class="tag">Git</span>
+                    <span class="tag">GitHub</span>
+                    <span class="tag">Version Control</span>
+                </div>
+                <div class="article-meta">
+                    <span>22 min read</span>
+                    <span class="difficulty beginner">Beginner</span>
+                </div>
+            </div>
+
+            <!-- Article 14 -->
+            <div class="article-card" data-category="tools">
+                <div class="article-number">Article 14</div>
+                <h2 class="article-title">Webpack & Build Tools</h2>
+                <p class="article-description">Configure Webpack, Babel, and modern build tools for optimized development and production workflows.</p>
+                <div class="article-tags">
+                    <span class="tag">Webpack</span>
+                    <span class="tag">Babel</span>
+                    <span class="tag">Build Tools</span>
+                </div>
+                <div class="article-meta">
+                    <span>26 min read</span>
+                    <span class="difficulty intermediate">Intermediate</span>
+                </div>
+            </div>
+
+            <!-- Article 15 -->
+            <div class="article-card" data-category="tools">
+                <div class="article-number">Article 15</div>
+                <h2 class="article-title">Docker & Containerization</h2>
+                <p class="article-description">Containerize applications with Docker, Docker Compose, and deployment in containerized environments.</p>
+                <div class="article-tags">
+                    <span class="tag">Docker</span>
+                    <span class="tag">Containers</span>
+                    <span class="tag">DevOps</span>
+                </div>
+                <div class="article-meta">
+                    <span>31 min read</span>
+                    <span class="difficulty advanced">Advanced</span>
+                </div>
+            </div>
+
+            <!-- Article 16 -->
+            <div class="article-card" data-category="frontend">
+                <div class="article-number">Article 16</div>
+                <h2 class="article-title">Progressive Web Apps (PWA)</h2>
+                <p class="article-description">Build progressive web apps with service workers, caching strategies, and native app-like experiences.</p>
+                <div class="article-tags">
+                    <span class="tag">PWA</span>
+                    <span class="tag">Service Workers</span>
+                    <span class="tag">Offline</span>
+                </div>
+                <div class="article-meta">
+                    <span>29 min read</span>
+                    <span class="difficulty advanced">Advanced</span>
+                </div>
+            </div>
+
+            <!-- Article 17 -->
+            <div class="article-card" data-category="frontend">
+                <div class="article-number">Article 17</div>
+                <h2 class="article-title">Web Performance Optimization</h2>
+                <p class="article-description">Optimize loading times, implement lazy loading, code splitting, and performance monitoring techniques.</p>
+                <div class="article-tags">
+                    <span class="tag">Performance</span>
+                    <span class="tag">Optimization</span>
+                    <span class="tag">Lazy Loading</span>
+                </div>
+                <div class="article-meta">
+                    <span>34 min read</span>
+                    <span class="difficulty advanced">Advanced</span>
+                </div>
+            </div>
+
+            <!-- Article 18 -->
+            <div class="article-card" data-category="fullstack">
+                <div class="article-number">Article 18</div>
+                <h2 class="article-title">Web Security Best Practices</h2>
+                <p class="article-description">Implement security measures against XSS, CSRF, SQL injection, and other common web vulnerabilities.</p>
+                <div class="article-tags">
+                    <span class="tag">Security</span>
+                    <span class="tag">XSS</span>
+                    <span class="tag">CSRF</span>
+                </div>
+                <div class="article-meta">
+                    <span>28 min read</span>
+                    <span class="difficulty advanced">Advanced</span>
+                </div>
+            </div>
+
+            <!-- Article 19 -->
+            <div class="article-card" data-category="tools">
+                <div class="article-number">Article 19</div>
+                <h2 class="article-title">Testing & Test-Driven Development</h2>
+                <p class="article-description">Master unit testing, integration testing, and TDD with Jest, React Testing Library, and Cypress.</p>
+                <div class="article-tags">
+                    <span class="tag">Testing</span>
+                    <span class="tag">TDD</span>
+                    <span class="tag">Jest</span>
+                </div>
+                <div class="article-meta">
+                    <span>36 min read</span>
+                    <span class="difficulty intermediate">Intermediate</span>
+                </div>
+            </div>
+
+            <!-- Article 20 -->
+            <div class="article-card" data-category="tools">
+                <div class="article-number">Article 20</div>
+                <h2 class="article-title">CI/CD & Deployment Pipelines</h2>
+                <p class="article-description">Set up continuous integration and deployment with GitHub Actions, Jenkins, and automated testing.</p>
+                <div class="article-tags">
+                    <span class="tag">CI/CD</span>
+                    <span class="tag">GitHub Actions</span>
+                    <span class="tag">Automation</span>
+                </div>
+                <div class="article-meta">
+                    <span>32 min read</span>
+                    <span class="difficulty advanced">Advanced</span>
+                </div>
+            </div>
+
+            <!-- Article 21 -->
+            <div class="article-card" data-category="backend">
+                <div class="article-number">Article 21</div>
+                <h2 class="article-title">Microservices Architecture</h2>
+                <p class="article-description">Design and implement microservices with API gateways, service discovery, and distributed systems patterns.</p>
+                <div class="article-tags">
+                    <span class="tag">Microservices</span>
+                    <span class="tag">API Gateway</span>
+                    <span class="tag">Distributed</span>
+                </div>
+                <div class="article-meta">
+                    <span>40 min read</span>
+                    <span class="difficulty advanced">Advanced</span>
+                </div>
+            </div>
+
+            <!-- Article 22 -->
+            <div class="article-card" data-category="fullstack">
+                <div class="article-number">Article 22</div>
+                <h2 class="article-title">Real-time Applications with WebSockets</h2>
+                <p class="article-description">Build real-time features with WebSockets, Socket.io, and live data synchronization across clients.</p>
+                <div class="article-tags">
+                    <span class="tag">WebSockets</span>
+                    <span class="tag">Socket.io</span>
+                    <span class="tag">Real-time</span>
+                </div>
+                <div class="article-meta">
+                    <span>33 min read</span>
+                    <span class="difficulty advanced">Advanced</span>
+                </div>
+            </div>
+
+            <!-- Article 23 -->
+            <div class="article-card" data-category="fullstack">
+                <div class="article-number">Article 23</div>
+                <h2 class="article-title">Cloud Deployment & AWS</h2>
+                <p class="article-description">Deploy applications to AWS, configure load balancers, auto-scaling, and manage cloud infrastructure.</p>
+                <div class="article-tags">
+                    <span class="tag">AWS</span>
+                    <span class="tag">Cloud</span>
+                    <span class="tag">Deployment</span>
+                </div>
+                <div class="article-meta">
+                    <span>37 min read</span>
+                    <span class="difficulty advanced">Advanced</span>
+                </div>
+            </div>
+
+            <!-- Article 24 -->
+            <div class="article-card" data-category="fullstack">
+                <div class="article-number">Article 24</div>
+                <h2 class="article-title">Web Development Career & Portfolio</h2>
+                <p class="article-description">Build an impressive portfolio, prepare for interviews, and advance your web development career.</p>
+                <div class="article-tags">
+                    <span class="tag">Career</span>
+                    <span class="tag">Portfolio</span>
+                    <span class="tag">Interview</span>
+                </div>
+                <div class="article-meta">
+                    <span>25 min read</span>
+                    <span class="difficulty beginner">Beginner</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const articles = document.querySelectorAll('.article-card');
+            
+            articles.forEach(article => {
+                const title = article.querySelector('.article-title').textContent.toLowerCase();
+                const description = article.querySelector('.article-description').textContent.toLowerCase();
+                const tags = Array.from(article.querySelectorAll('.tag')).map(tag => tag.textContent.toLowerCase());
+                
+                const matches = title.includes(searchTerm) || 
+                               description.includes(searchTerm) || 
+                               tags.some(tag => tag.includes(searchTerm));
+                
+                article.style.display = matches ? 'block' : 'none';
+            });
+        });
+
+        // Category filtering
+        function filterCategory(category) {
+            const articles = document.querySelectorAll('.article-card');
+            const filters = document.querySelectorAll('.category-filter');
+            
+            // Update active filter
+            filters.forEach(filter => filter.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Show/hide articles
+            articles.forEach(article => {
+                if (category === 'all' || article.dataset.category === category) {
+                    article.style.display = 'block';
+                } else {
+                    article.style.display = 'none';
+                }
+            });
+        }
+
+        // Article click handler
+        document.querySelectorAll('.article-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const articleNumber = this.querySelector('.article-number').textContent;
+                const articleTitle = this.querySelector('.article-title').textContent;
+                alert(`Opening ${articleNumber}: ${articleTitle}\n\nThis would navigate to the full article page.`);
+            });
+        });
+
+        // Add smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

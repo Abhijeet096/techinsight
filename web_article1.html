@@ -1,0 +1,696 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML5 Fundamentals & Semantic Elements - Article 1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .article-header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 40px 0;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .article-number {
+            display: inline-block;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .article-title {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .article-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 600px;
+            margin: 0 auto 20px;
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.9rem;
+        }
+
+        .difficulty {
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-weight: 500;
+            background: #e8f5e8;
+            color: #2d5a2d;
+        }
+
+        .article-content {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .table-of-contents {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-left: 4px solid #667eea;
+        }
+
+        .table-of-contents h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .table-of-contents ul {
+            list-style: none;
+        }
+
+        .table-of-contents li {
+            margin-bottom: 8px;
+        }
+
+        .table-of-contents a {
+            color: #667eea;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .table-of-contents a:hover {
+            color: #764ba2;
+        }
+
+        .section {
+            margin-bottom: 35px;
+        }
+
+        .section h2 {
+            color: #333;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .section h3 {
+            color: #444;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            margin-top: 25px;
+        }
+
+        .section h4 {
+            color: #555;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            margin-top: 20px;
+        }
+
+        .section p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .section ul, .section ol {
+            margin-bottom: 15px;
+            padding-left: 25px;
+        }
+
+        .section li {
+            margin-bottom: 8px;
+        }
+
+        .code-block {
+            background: #f4f4f4;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            position: relative;
+        }
+
+        .code-block::before {
+            content: 'HTML';
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            background: #667eea;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+
+        .highlight {
+            background: #fff3cd;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+
+        .info-box {
+            background: #e7f3ff;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .tip-box {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+        .nav-button {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        @media (max-width: 768px) {
+            .article-title {
+                font-size: 2rem;
+            }
+            
+            .article-content {
+                padding: 25px;
+            }
+            
+            .article-meta {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .navigation {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="article-header">
+            <div class="article-number">Article 1</div>
+            <h1 class="article-title">HTML5 Fundamentals & Semantic Elements</h1>
+            <p class="article-subtitle">Master the building blocks of web development with HTML5 semantic elements, forms, and modern best practices.</p>
+            <div class="article-meta">
+                <span class="meta-item">📖 15 min read</span>
+                <span class="meta-item difficulty">Beginner</span>
+                <span class="meta-item">🏷️ HTML5 • Semantic • Accessibility</span>
+            </div>
+        </div>
+
+        <div class="article-content">
+            <div class="table-of-contents">
+                <h3>📚 Table of Contents</h3>
+                <ul>
+                    <li><a href="#introduction">1. Introduction to HTML5</a></li>
+                    <li><a href="#semantic-elements">2. Semantic Elements</a></li>
+                    <li><a href="#document-structure">3. Document Structure</a></li>
+                    <li><a href="#forms">4. HTML5 Forms</a></li>
+                    <li><a href="#multimedia">5. Multimedia Elements</a></li>
+                    <li><a href="#accessibility">6. Accessibility Features</a></li>
+                    <li><a href="#best-practices">7. Best Practices</a></li>
+                    <li><a href="#conclusion">8. Conclusion</a></li>
+                </ul>
+            </div>
+
+            <div class="section" id="introduction">
+                <h2>1. Introduction to HTML5</h2>
+                <p>HTML5 represents the latest evolution of the HyperText Markup Language, bringing powerful new features and semantic clarity to web development. Unlike its predecessors, HTML5 was designed with modern web applications in mind, offering better structure, enhanced multimedia support, and improved accessibility.</p>
+                
+                <p>The transition from HTML4 to HTML5 wasn't just about adding new tags—it was a fundamental shift toward more meaningful, semantic markup that helps both developers and machines understand content better. This semantic approach is crucial for search engine optimization, accessibility, and maintainable code.</p>
+
+                <div class="info-box">
+                    <strong>💡 Key Benefits of HTML5:</strong>
+                    <ul>
+                        <li>Semantic elements that describe content meaning</li>
+                        <li>Better accessibility for screen readers and assistive technologies</li>
+                        <li>Improved SEO through structured content</li>
+                        <li>Native multimedia support without plugins</li>
+                        <li>Enhanced form controls and validation</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section" id="semantic-elements">
+                <h2>2. Semantic Elements</h2>
+                <p>Semantic elements are the cornerstone of HTML5, providing meaning to content rather than just defining appearance. These elements tell browsers, search engines, and assistive technologies what each part of your page represents.</p>
+
+                <h3>2.1 Main Structural Elements</h3>
+                <p>The primary semantic elements that form the backbone of any HTML5 document:</p>
+
+                <div class="code-block">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Semantic HTML5 Example&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Website Title&lt;/h1&gt;
+        &lt;nav&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href="#home"&gt;Home&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#about"&gt;About&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#contact"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+
+    &lt;main&gt;
+        &lt;article&gt;
+            &lt;header&gt;
+                &lt;h2&gt;Article Title&lt;/h2&gt;
+                &lt;p&gt;Published on &lt;time datetime="2024-01-15"&gt;January 15, 2024&lt;/time&gt;&lt;/p&gt;
+            &lt;/header&gt;
+            &lt;section&gt;
+                &lt;h3&gt;Section Heading&lt;/h3&gt;
+                &lt;p&gt;Article content goes here...&lt;/p&gt;
+            &lt;/section&gt;
+            &lt;aside&gt;
+                &lt;h4&gt;Related Information&lt;/h4&gt;
+                &lt;p&gt;Sidebar content...&lt;/p&gt;
+            &lt;/aside&gt;
+        &lt;/article&gt;
+    &lt;/main&gt;
+
+    &lt;footer&gt;
+        &lt;p&gt;&amp;copy; 2024 Your Website. All rights reserved.&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+                </div>
+
+                <h3>2.2 Element Descriptions</h3>
+                <ul>
+                    <li><strong>&lt;header&gt;</strong>: Contains introductory content, typically navigation or heading elements</li>
+                    <li><strong>&lt;nav&gt;</strong>: Defines navigation links for the document or section</li>
+                    <li><strong>&lt;main&gt;</strong>: Represents the main content area of the document</li>
+                    <li><strong>&lt;article&gt;</strong>: Self-contained content that could be distributed independently</li>
+                    <li><strong>&lt;section&gt;</strong>: Thematic grouping of content with a heading</li>
+                    <li><strong>&lt;aside&gt;</strong>: Content tangentially related to the main content</li>
+                    <li><strong>&lt;footer&gt;</strong>: Contains footer information for its nearest sectioning content</li>
+                </ul>
+
+                <div class="tip-box">
+                    <strong>💡 Pro Tip:</strong> Use semantic elements even if you're styling them with CSS. The semantic meaning is separate from visual presentation and helps with accessibility and SEO.
+                </div>
+            </div>
+
+            <div class="section" id="document-structure">
+                <h2>3. Document Structure</h2>
+                <p>Proper document structure is essential for creating maintainable and accessible websites. HTML5 provides a clear hierarchy that both humans and machines can understand.</p>
+
+                <h3>3.1 Heading Hierarchy</h3>
+                <p>Headings (&lt;h1&gt; through &lt;h6&gt;) create a logical outline of your content. Each page should have one &lt;h1&gt; element, with subsequent headings following a logical hierarchy.</p>
+
+                <div class="code-block">
+&lt;article&gt;
+    &lt;h1&gt;Main Article Title&lt;/h1&gt;
+    
+    &lt;section&gt;
+        &lt;h2&gt;First Major Section&lt;/h2&gt;
+        &lt;p&gt;Content for the first section...&lt;/p&gt;
+        
+        &lt;h3&gt;Subsection&lt;/h3&gt;
+        &lt;p&gt;More detailed content...&lt;/p&gt;
+        
+        &lt;h4&gt;Sub-subsection&lt;/h4&gt;
+        &lt;p&gt;Even more specific content...&lt;/p&gt;
+    &lt;/section&gt;
+    
+    &lt;section&gt;
+        &lt;h2&gt;Second Major Section&lt;/h2&gt;
+        &lt;p&gt;Content for the second section...&lt;/p&gt;
+    &lt;/section&gt;
+&lt;/article&gt;
+                </div>
+
+                <h3>3.2 Content Flow</h3>
+                <p>Understanding how content flows within semantic elements helps create logical, accessible documents:</p>
+
+                <div class="info-box">
+                    <strong>Document Flow Best Practices:</strong>
+                    <ul>
+                        <li>Use one &lt;main&gt; element per page</li>
+                        <li>Headers can contain navigation, but main content should be in &lt;main&gt;</li>
+                        <li>Articles should be self-contained and make sense independently</li>
+                        <li>Sections should have headings and represent thematic content groupings</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section" id="forms">
+                <h2>4. HTML5 Forms</h2>
+                <p>HTML5 revolutionized web forms with new input types, attributes, and built-in validation. These enhancements reduce the need for JavaScript and provide better user experiences.</p>
+
+                <h3>4.1 New Input Types</h3>
+                <p>HTML5 introduces several new input types that provide better user interfaces and automatic validation:</p>
+
+                <div class="code-block">
+&lt;form&gt;
+    &lt;!-- Email input with validation --&gt;
+    &lt;label for="email"&gt;Email Address:&lt;/label&gt;
+    &lt;input type="email" id="email" name="email" required&gt;
+    
+    &lt;!-- Number input with min/max --&gt;
+    &lt;label for="age"&gt;Age:&lt;/label&gt;
+    &lt;input type="number" id="age" name="age" min="18" max="120"&gt;
+    
+    &lt;!-- Date input --&gt;
+    &lt;label for="birthdate"&gt;Birth Date:&lt;/label&gt;
+    &lt;input type="date" id="birthdate" name="birthdate"&gt;
+    
+    &lt;!-- Color picker --&gt;
+    &lt;label for="color"&gt;Favorite Color:&lt;/label&gt;
+    &lt;input type="color" id="color" name="color"&gt;
+    
+    &lt;!-- Range slider --&gt;
+    &lt;label for="rating"&gt;Rating (1-10):&lt;/label&gt;
+    &lt;input type="range" id="rating" name="rating" min="1" max="10" value="5"&gt;
+    
+    &lt;!-- URL input --&gt;
+    &lt;label for="website"&gt;Website:&lt;/label&gt;
+    &lt;input type="url" id="website" name="website"&gt;
+    
+    &lt;!-- Search input --&gt;
+    &lt;label for="search"&gt;Search:&lt;/label&gt;
+    &lt;input type="search" id="search" name="search"&gt;
+    
+    &lt;button type="submit"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;
+                </div>
+
+                <h3>4.2 Form Attributes</h3>
+                <p>HTML5 provides powerful attributes for form validation and user experience:</p>
+
+                <ul>
+                    <li><span class="highlight">required</span>: Makes a field mandatory</li>
+                    <li><span class="highlight">placeholder</span>: Provides hint text</li>
+                    <li><span class="highlight">pattern</span>: Defines a regular expression for validation</li>
+                    <li><span class="highlight">min/max</span>: Sets minimum and maximum values</li>
+                    <li><span class="highlight">step</span>: Defines increments for numeric inputs</li>
+                    <li><span class="highlight">autocomplete</span>: Controls browser auto-completion</li>
+                </ul>
+
+                <div class="warning-box">
+                    <strong>⚠️ Important:</strong> Client-side validation is for user experience only. Always validate data on the server side for security.
+                </div>
+            </div>
+
+            <div class="section" id="multimedia">
+                <h2>5. Multimedia Elements</h2>
+                <p>HTML5 introduced native support for audio and video, eliminating the need for plugins like Flash. These elements provide standardized ways to embed multimedia content.</p>
+
+                <h3>5.1 Video Element</h3>
+                <div class="code-block">
+&lt;video controls width="600" height="400"&gt;
+    &lt;source src="movie.mp4" type="video/mp4"&gt;
+    &lt;source src="movie.webm" type="video/webm"&gt;
+    &lt;track kind="subtitles" src="subtitles.vtt" srclang="en" label="English"&gt;
+    &lt;p&gt;Your browser doesn't support HTML5 video. 
+       &lt;a href="movie.mp4"&gt;Download the video&lt;/a&gt; instead.&lt;/p&gt;
+&lt;/video&gt;
+                </div>
+
+                <h3>5.2 Audio Element</h3>
+                <div class="code-block">
+&lt;audio controls&gt;
+    &lt;source src="audio.mp3" type="audio/mpeg"&gt;
+    &lt;source src="audio.ogg" type="audio/ogg"&gt;
+    &lt;p&gt;Your browser doesn't support HTML5 audio. 
+       &lt;a href="audio.mp3"&gt;Download the audio&lt;/a&gt; instead.&lt;/p&gt;
+&lt;/audio&gt;
+                </div>
+
+                <h3>5.3 Figure and Figcaption</h3>
+                <p>Use &lt;figure&gt; and &lt;figcaption&gt; to provide semantic markup for images, diagrams, and other media:</p>
+
+                <div class="code-block">
+&lt;figure&gt;
+    &lt;img src="chart.jpg" alt="Sales data for Q1 2024"&gt;
+    &lt;figcaption&gt;
+        Figure 1: Sales performance showing 25% growth in Q1 2024
+    &lt;/figcaption&gt;
+&lt;/figure&gt;
+                </div>
+            </div>
+
+            <div class="section" id="accessibility">
+                <h2>6. Accessibility Features</h2>
+                <p>HTML5 was designed with accessibility in mind, providing better support for screen readers and other assistive technologies. Semantic elements are just the beginning.</p>
+
+                <h3>6.1 ARIA Attributes</h3>
+                <p>While semantic HTML provides good accessibility, ARIA (Accessible Rich Internet Applications) attributes can enhance it further:</p>
+
+                <div class="code-block">
+&lt;nav aria-label="Main navigation"&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="/" aria-current="page"&gt;Home&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/about"&gt;About&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/contact"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;
+
+&lt;button aria-expanded="false" aria-controls="dropdown-menu"&gt;
+    Menu
+&lt;/button&gt;
+&lt;ul id="dropdown-menu" aria-hidden="true"&gt;
+    &lt;li&gt;&lt;a href="/profile"&gt;Profile&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="/settings"&gt;Settings&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+                </div>
+
+                <h3>6.2 Form Accessibility</h3>
+                <p>Proper form labeling and structure are crucial for accessibility:</p>
+
+                <div class="code-block">
+&lt;fieldset&gt;
+    &lt;legend&gt;Personal Information&lt;/legend&gt;
+    
+    &lt;label for="firstname"&gt;First Name:&lt;/label&gt;
+    &lt;input type="text" id="firstname" name="firstname" required 
+           aria-describedby="firstname-help"&gt;
+    &lt;div id="firstname-help"&gt;Enter your legal first name&lt;/div&gt;
+    
+    &lt;label for="lastname"&gt;Last Name:&lt;/label&gt;
+    &lt;input type="text" id="lastname" name="lastname" required&gt;
+&lt;/fieldset&gt;
+                </div>
+
+                <div class="tip-box">
+                    <strong>💡 Accessibility Checklist:</strong>
+                    <ul>
+                        <li>Always use proper heading hierarchy</li>
+                        <li>Provide alt text for images</li>
+                        <li>Use labels with form controls</li>
+                        <li>Ensure sufficient color contrast</li>
+                        <li>Make interactive elements keyboard accessible</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section" id="best-practices">
+                <h2>7. Best Practices</h2>
+                <p>Following HTML5 best practices ensures your code is maintainable, accessible, and future-proof.</p>
+
+                <h3>7.1 Code Organization</h3>
+                <ul>
+                    <li>Use semantic elements instead of generic divs when possible</li>
+                    <li>Keep HTML structure separate from styling (use CSS)</li>
+                    <li>Validate your HTML using the W3C Markup Validator</li>
+                    <li>Use consistent indentation and formatting</li>
+                    <li>Comment complex sections of code</li>
+                </ul>
+
+                <h3>7.2 Performance Considerations</h3>
+                <div class="code-block">
+&lt;!-- Optimize images --&gt;
+&lt;img src="hero-image.jpg" alt="Description" 
+     width="800" height="400" loading="lazy"&gt;
+
+&lt;!-- Use appropriate image formats --&gt;
+&lt;picture&gt;
+    &lt;source srcset="image.webp" type="image/webp"&gt;
+    &lt;source srcset="image.jpg" type="image/jpeg"&gt;
+    &lt;img src="image.jpg" alt="Description"&gt;
+&lt;/picture&gt;
+
+&lt;!-- Preload critical resources --&gt;
+&lt;link rel="preload" href="critical.css" as="style"&gt;
+&lt;link rel="preload" href="hero-font.woff2" as="font" type="font/woff2" crossorigin&gt;
+                </div>
+
+                <h3>7.3 SEO Optimization</h3>
+                <div class="code-block">
+&lt;!-- Essential meta tags --&gt;
+&lt;meta charset="UTF-8"&gt;
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+&lt;meta name="description" content="Concise page description for search engines"&gt;
+&lt;meta name="keywords" content="relevant, keywords, for, page"&gt;
+
+&lt;!-- Open Graph tags for social media --&gt;
+&lt;meta property="og:title" content="Page Title"&gt;
+&lt;meta property="og:description" content="Page description"&gt;
+&lt;meta property="og:image" content="image-url.jpg"&gt;
+&lt;meta property="og:url" content="https://yoursite.com/page"&gt;
+
+&lt;!-- Structured data --&gt;
+&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Article Title",
+  "author": "Author Name",
+  "datePublished": "2024-01-15"
+}
+&lt;/script&gt;
+                </div>
+            </div>
+
+            <div class="section" id="conclusion">
+                <h2>8. Conclusion</h2>
+                <p>HTML5 fundamentals and semantic elements form the foundation of modern web development. By using semantic markup, you create more accessible, maintainable, and SEO-friendly websites. The key takeaways from this article are:</p>
+
+                <ul>
+                    <li>Semantic elements provide meaning to your content structure</li>
+                    <li>Proper document hierarchy improves accessibility and SEO</li>
+                    <li>HTML5 forms offer enhanced user experiences with built-in validation</li>
+                    <li>Native multimedia support reduces dependency on plugins</li>
+                    <li>Accessibility should be considered from the beginning, not added later</li>
+                </ul>
+
+                <p>As you continue your web development journey, remember that HTML5 is not just about learning new tags—it's about thinking semantically and creating web experiences that work for everyone. The semantic web is more than a technical concept; it's about making the internet more inclusive and accessible.</p>
+
+                <div class="info-box">
+                    <strong>🎯 Next Steps:</strong>
+                    <ul>
+                        <li>Practice building semantic HTML structures</li>
+                        <li>Experiment with different form input types</li>
+                        <li>Test your pages with screen readers</li>
+                        <li>Validate your HTML and fix any errors</li>
+                        <li>Move on to Article 2: CSS3 Advanced Layouts & Flexbox</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="navigation">
+            <button class="nav-button" onclick="goBack()" disabled>← Previous Article</button>
+            <a href="webdev24arti.html" class="nav-button">📚 All Articles</a>
+
+            <button class="nav-button" onclick="goNext()">Next Article →</button>
+        </div>
+    </div>
+
+    <script>
+        function goBack() {
+            alert("This is the first article in the series!");
+        }
+
+        function goNext() {
+            alert("Opening Article 2: CSS3 Advanced Layouts & Flexbox");
+            // In a real application, this would navigate to the next article
+        }
+
+        function goToIndex() {
+            alert("Returning to the main articles page");
+            // In a real application, this would navigate to the main articles page
+        }
+
+        // Smooth scrolling for table of contents
+        document.querySelectorAll('.table-of-contents a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({
+    behavior: "smooth"  });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+                  
