@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="canonical" href="http://techinsights.live/web_article4.html" />
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A comprehensive guide to React.js, covering components, state management, hooks, and modern React practices for building dynamic web applications.">
+    <meta name="keywords" content="React.js, JavaScript, web development, React hooks, components, state management, frontend development, React guide">
+    <meta name="author" content="TechInsights">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="React.js Complete Guide - Article 4">
+    <meta property="og:description" content="Learn React.js from scratch, including components, state, hooks, and best practices for building modern web applications.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="http://techinsights.live/web_article4.html">
+    <meta property="og:site_name" content="TechInsights">
+    <meta property="og:image" content="https://techinsights.live/images/react-guide.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="React.js Complete Guide - Article 4">
+    <meta name="twitter:description" content="Master React.js with this complete guide covering components, hooks, state management, and more.">
+    <meta name="twitter:image" content="https://techinsights.live/images/react-guide.jpg">
+    <title>React.js Complete Guide - Article 4</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .article-header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 40px 0;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .article-number {
+            display: inline-block;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .article-title {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .article-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 600px;
+            margin: 0 auto 20px;
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.9rem;
+        }
+
+        .difficulty {
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-weight: 500;
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .article-content {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .table-of-contents {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-left: 4px solid #667eea;
+        }
+
+        .table-of-contents h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .table-of-contents ul {
+            list-style: none;
+        }
+
+        .table-of-contents li {
+            margin-bottom: 8px;
+        }
+
+        .table-of-contents a {
+            color: #667eea;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .table-of-contents a:hover {
+            color: #764ba2;
+        }
+
+        .section {
+            margin-bottom: 35px;
+        }
+
+        .section h2 {
+            color: #333;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .section h3 {
+            color: #444;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            margin-top: 25px;
+        }
+
+        .section h4 {
+            color: #555;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            margin-top: 20px;
+        }
+
+        .section p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .section ul, .section ol {
+            margin-bottom: 15px;
+            padding-left: 25px;
+        }
+
+        .section li {
+            margin-bottom: 8px;
+        }
+
+        .code-block {
+            background: #f4f4f4;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            position: relative;
+        }
+
+        .code-block::before {
+            content: 'JavaScript';
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            background: #667eea;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+
+        .code-block.html::before {
+            content: 'HTML';
+        }
+
+        .code-block.jsx::before {
+            content: 'JSX';
+        }
+
+        .highlight {
+            background: #fff3cd;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+
+        .info-box {
+            background: #e7f3ff;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .tip-box {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .flex-demo {
+            background: #f8f9fa;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .flex-container {
+            display: flex;
+            background: #e9ecef;
+            border-radius: 4px;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        .flex-item {
+            background: #667eea;
+            color: white;
+            padding: 10px;
+            margin: 5px;
+            border-radius: 4px;
+            text-align: center;
+            min-width: 80px;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+        .nav-button {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        @media (max-width: 768px) {
+            .article-title {
+                font-size: 2rem;
+            }
+            
+            .article-content {
+                padding: 25px;
+            }
+            
+            .article-meta {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .navigation {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "React.js Complete Guide - Article 4",
+        "description": "A comprehensive guide to React.js, covering components, state management, hooks, and modern React practices for building dynamic web applications.",
+        "author": {
+            "@type": "Organization",
+            "name": "TechInsights"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "TechInsights",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://techinsights.live/images/logo.png"
+            }
+        },
+        "datePublished": "2025-07-14",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http://techinsights.live/web_article4.html"
+        }
+    }
+    </script>
+
+    <div class="container">
+        <div class="article-header">
+            <div class="article-number">Article 4</div>
+            <h1 class="article-title">React.js Complete Guide</h1>
+            <p class="article-subtitle">Master React.js with this comprehensive guide to components, state management, hooks, and modern practices for building dynamic web applications.</p>
+            <div class="article-meta">
+                <span class="meta-item">📖 22 min read</span>
+                <span class="meta-item difficulty">Intermediate</span>
+                <span class="meta-item">🏷️ React.js • JavaScript • Hooks • State Management • Frontend</span>
+            </div>
+        </div>
+
+        <div class="article-content">
+            <div class="table-of-contents">
+                <h3>📚 Table of Contents</h3>
+                <ul>
+                    <li><a href="#introduction">1. Introduction to React.js</a></li>
+                    <li><a href="#components">2. React Components</a></li>
+                    <li><a href="#state-props">3. State and Props</a></li>
+                    <li><a href="#hooks">4. React Hooks</a></li>
+                    <li><a href="#routing">5. React Router</a></li>
+                    <li><a href="#state-management">6. State Management</a></li>
+                    <li><a href="#performance">7. Performance Optimization</a></li>
+                    <li><a href="#best-practices">8. Best Practices</a></li>
+                    <li><a href="#conclusion">9. Conclusion</a></li>
+                </ul>
+            </div>
+
+            <div class="section" id="introduction">
+                <h2>1. Introduction to React.js</h2>
+                <p>React.js is a JavaScript library for building user interfaces, particularly single-page applications. Developed by Facebook, it emphasizes a component-based architecture, making it efficient and flexible for modern web development.</p>
+                
+                <p>React uses a virtual DOM to optimize rendering and provides a declarative approach to building UI, allowing developers to focus on what the UI should look like rather than how to achieve it.</p>
+
+                <div class="info-box">
+                    <strong>💡 Why Use React?</strong>
+                    <ul>
+                        <li>Component-based architecture for reusable code</li>
+                        <li>Virtual DOM for faster updates</li>
+                        <li>Rich ecosystem with tools like React Router and Redux</li>
+                        <li>Strong community and widespread adoption</li>
+                    </ul>
+                </div>
+
+                <h3>1.1 Key Features</h3>
+                <ul>
+                    <li><strong>JSX:</strong> JavaScript XML syntax for describing UI</li>
+                    <li><strong>Components:</strong> Reusable building blocks</li>
+                    <li><strong>Unidirectional Data Flow:</strong> Predictable state management</li>
+                    <li><strong>Hooks:</strong> Functional component state and lifecycle</li>
+                </ul>
+            </div>
+
+            <div class="section" id="components">
+                <h2>2. React Components</h2>
+                <p>Components are the building blocks of React applications, encapsulating UI logic and rendering.</p>
+
+                <h3>2.1 Functional Components</h3>
+                <p>Modern React favors functional components with hooks over class components.</p>
+                <div class="code-block jsx">
+import React from 'react';
+
+const Welcome = ({ name }) => {
+    return <h1>Hello, {name}!</h1>;
+};
+
+export default Welcome;
+                </div>
+
+                <h3>2.2 Component Composition</h3>
+                <p>Components can be nested to create complex UIs.</p>
+                <div class="code-block jsx">
+import React from 'react';
+
+const Header = () => <header>My App</header>;
+const Footer = () => <footer>© 2025</footer>;
+
+const Layout = ({ children }) => (
+    <>
+        <Header />
+        <main>{children}</main>
+        <Footer />
+    </>
+);
+
+export default Layout;
+                </div>
+            </div>
+
+            <div class="section" id="state-props">
+                <h2>3. State and Props</h2>
+                <p><code>Props</code> are read-only inputs to components, while <code>state</code> manages dynamic data.</p>
+
+                <h3>3.1 Props</h3>
+                <div class="code-block jsx">
+import React from 'react';
+
+const Button = ({ label, onClick }) => (
+    <button onClick={onClick}>{label}</button>
+);
+
+export default Button;
+                </div>
+
+                <h3>3.2 State with useState</h3>
+                <div class="code-block jsx">
+import React, { useState } from 'react';
+
+const Counter = () => {
+    const [count, setCount] = useState(0);
+
+    return (
+        <div>
+            <p>Count: {count}</p>
+            <button onClick={() => setCount(count + 1)}>Increment</button>
+        </div>
+    );
+};
+
+export default Counter;
+                </div>
+
+                <div class="tip-box">
+                    <strong>💡 Pro Tip:</strong> Keep props immutable and use state for dynamic data to maintain predictable behavior.
+                </div>
+            </div>
+
+            <div class="section" id="hooks">
+                <h2>4. React Hooks</h2>
+                <p>Hooks, introduced in React 16.8, allow functional components to manage state and lifecycle.</p>
+
+                <h3>4.1 useState</h3>
+                <p>Manages state in functional components (see above).</p>
+
+                <h3>4.2 useEffect</h3>
+                <p>Handles side effects like data fetching or subscriptions.</p>
+                <div class="code-block jsx">
+import React, { useState, useEffect } from 'react';
+
+const DataFetcher = () => {
+    const [data, setData] = useState(null);
+
+    useEffect(() => {
+        fetch('https://api.example.com/data')
+            .then(res => res.json())
+            .then(setData)
+            .catch(console.error);
+    }, []); // Empty dependency array for componentDidMount effect
+
+    return <div>{data ? JSON.stringify(data) : 'Loading...'}</div>;
+};
+
+export default DataFetcher;
+                </div>
+
+                <h3>4.3 Custom Hooks</h3>
+                <div class="code-block jsx">
+import { useState, useEffect } from 'react';
+
+const useFetch = (url) => {
+    const [data, setData] = useState(null);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        fetch(url)
+            .then(res => res.json())
+            .then(data => {
+                setData(data);
+                setLoading(false);
+            })
+            .catch(console.error);
+    }, [url]);
+
+    return { data, loading };
+};
+
+export default useFetch;
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Note:</strong> Follow the Rules of Hooks: only call hooks at the top level and in functional components or custom hooks.
+                </div>
+            </div>
+
+            <div class="section" id="routing">
+                <h2>5. React Router</h2>
+                <p>React Router enables client-side routing for single-page applications.</p>
+
+                <h3>5.1 Basic Routing</h3>
+                <div class="code-block jsx">
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
+const App = () => (
+    <BrowserRouter>
+        <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="*" element={<NotFound />} />
+        </Routes>
+    </BrowserRouter>
+);
+
+export default App;
+                </div>
+
+                <h3>5.2 Navigation</h3>
+                <div class="code-block jsx">
+import { Link, useNavigate } from 'react-router-dom';
+
+const Nav = () => {
+    const navigate = useNavigate();
+
+    return (
+        <nav>
+            <Link to="/">Home</Link>
+            <Link to="/about">About</Link>
+            <button onClick={() => navigate('/contact')}>Contact</button>
+        </nav>
+    );
+};
+
+export default Nav;
+                </div>
+            </div>
+
+            <div class="section" id="state-management">
+                <h2>6. State Management</h2>
+                <p>React offers built-in and external solutions for managing state across components.</p>
+
+                <h3>6.1 Context API</h3>
+                <div class="code-block jsx">
+import React, { createContext, useContext, useState } from 'react';
+
+const ThemeContext = createContext();
+
+const ThemeProvider = ({ children }) => {
+    const [theme, setTheme] = useState('light');
+
+    return (
+        <ThemeContext.Provider value={{ theme, setTheme }}>
+            {children}
+        </ThemeContext.Provider>
+    );
+};
+
+const ThemeComponent = () => {
+    const { theme, setTheme } = useContext(ThemeContext);
+
+    return (
+        <div>
+            <p>Current Theme: {theme}</p>
+            <button onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
+                Toggle Theme
+            </button>
+        </div>
+    );
+};
+
+export { ThemeProvider, ThemeComponent };
+                </div>
+
+                <h3>6.2 Redux (Optional)</h3>
+                <p>For complex apps, Redux provides a predictable state container.</p>
+                <div class="code-block jsx">
+import { createStore } from 'redux';
+import { Provider, useSelector, useDispatch } from 'react-redux';
+
+const reducer = (state = { count: 0 }, action) => {
+    switch (action.type) {
+        case 'INCREMENT':
+            Hull;
+        default:
+            return state;
+    }
+};
+
+const store = createStore(reducer);
+
+const Counter = () => {
+    const count = useSelector(state => state.count);
+    const dispatch = useDispatch();
+
+    return (
+        <div>
+            <p>Count: {count}</p>
+            <button onClick={() => dispatch({ type: 'INCREMENT' })}>Increment</button>
+        </div>
+    );
+};
+
+const App = () => (
+    <Provider store={store}>
+        <Counter />
+    </Provider>
+);
+
+export default App;
+                </div>
+            </div>
+
+            <div class="section" id="performance">
+                <h2>7. Performance Optimization</h2>
+                <p>Optimize React apps to ensure fast rendering and smooth user experiences.</p>
+
+                <h3>7.1 Memoization</h3>
+                <div class="code-block jsx">
+import React, { memo } from 'react';
+
+const ExpensiveComponent = memo(({ value }) => {
+    console.log('Rendering ExpensiveComponent');
+    return <div>{value}</div>;
+});
+                </div>
+
+                <h3>7.2 Lazy Loading</h3>
+                <div class="code-block jsx">
+import React, { lazy, Suspense } from 'react';
+
+const LazyComponent = lazy(() => import('./LazyComponent'));
+
+const App = () => (
+    <Suspense fallback={<div>Loading...</div>}>
+        <LazyComponent />
+    </Suspense>
+);
+                </div>
+
+                <div class="tip-box">
+                    <strong>💡 Pro Tip:</strong> Use React.memo and useCallback to prevent unnecessary re-renders of components.
+                </div>
+            </div>
+
+            <div class="section" id="best-practices">
+                <h2>8. Best Practices</h2>
+                <p>Follow these guidelines for maintainable and efficient React code.</p>
+
+                <h3>8.1 Component Design</h3>
+                <ul>
+                    <li>Keep components small and focused</li>
+                    <li>Use functional components with hooks</li>
+                    <li>Extract reusable logic into custom hooks</li>
+                </ul>
+
+                <h3>8.2 Common Pitfalls</h3>
+                <div class="warning-box">
+                    <strong>⚠️ Common Mistakes:</strong>
+                    <ul>
+                        <li>Ignoring key prop in lists</li>
+                        <li>Overusing Redux for simple state needs</li>
+                        <li>Not cleaning up useEffect subscriptions</li>
+                        <li>Mutating props or state directly</li>
+                    </ul>
+                </div>
+
+                <h3>8.3 Accessibility</h3>
+                <div class="code-block jsx">
+const AccessibleButton = () => (
+    <button
+        aria-label="Toggle menu"
+        role="button"
+        tabIndex={0}
+        onKeyDown={e => e.key === 'Enter' && handleClick()}
+    >
+        Menu
+    </button>
+);
+                </div>
+            </div>
+
+            <div class="section" id="conclusion">
+                <h2>9. Conclusion</h2>
+                <p>React.js empowers developers to build dynamic, scalable web applications with a component-based approach. By mastering components, hooks, routing, and state management, you can create robust UIs efficiently.</p>
+
+                <p>Key takeaways:</p>
+                <ul>
+                    <li>Components are reusable UI building blocks</li>
+                    <li>Hooks simplify state and lifecycle management</li>
+                    <li>React Router enables seamless navigation</li>
+                    <li>Context API and Redux handle complex state</li>
+                    <li>Optimization techniques ensure performance</li>
+                </ul>
+
+                <p>Start building React apps by experimenting with small projects and exploring the vast ecosystem of libraries and tools.</p>
+
+                <div class="info-box">
+                    <strong>🎯 Next Steps:</strong>
+                    <ul>
+                        <li>Build a todo list app with React hooks</li>
+                        <li>Create a multi-page app with React Router</li>
+                        <li>Integrate a third-party API with async data fetching</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="navigation">
+                <a href="/web_article3.html" class="nav-button">← Previous Article</a>
+                <a href="/web_article5.html" class="nav-button">Next Article →</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

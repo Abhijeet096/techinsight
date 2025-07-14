@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="canonical" href="http://techinsights.live/web_article5.html" />
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A comprehensive guide to Vue.js 3 Composition API, covering reactive state, composables, lifecycle hooks, and modern Vue practices for building dynamic web applications.">
+    <meta name="keywords" content="Vue.js, Vue 3, Composition API, JavaScript, web development, reactive programming, frontend development, Vue guide">
+    <meta name="author" content="TechInsights">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Vue.js 3 Composition API Guide - Article 5">
+    <meta property="og:description" content="Learn Vue.js 3 Composition API with this guide covering reactive state, composables, lifecycle hooks, and best practices for modern web development.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="http://techinsights.live/web_article5.html">
+    <meta property="og:site_name" content="TechInsights">
+    <meta property="og:image" content="https://techinsights.live/images/vue-guide.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Vue.js 3 Composition API Guide - Article 5">
+    <meta name="twitter:description" content="Master Vue.js 3 Composition API with this guide on reactive state, composables, and modern Vue practices.">
+    <meta name="twitter:image" content="https://techinsights.live/images/vue-guide.jpg">
+    <title>Vue.js 3 Composition API Guide - Article 5</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .article-header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 40px 0;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .article-number {
+            display: inline-block;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .article-title {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .article-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 600px;
+            margin: 0 auto 20px;
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.9rem;
+        }
+
+        .difficulty {
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-weight: 500;
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .article-content {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .table-of-contents {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-left: 4px solid #667eea;
+        }
+
+        .table-of-contents h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .table-of-contents ul {
+            list-style: none;
+        }
+
+        .table-of-contents li {
+            margin-bottom: 8px;
+        }
+
+        .table-of-contents a {
+            color: #667eea;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .table-of-contents a:hover {
+            color: #764ba2;
+        }
+
+        .section {
+            margin-bottom: 35px;
+        }
+
+        .section h2 {
+            color: #333;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .section h3 {
+            color: #444;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            margin-top: 25px;
+        }
+
+        .section h4 {
+            color: #555;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            margin-top: 20px;
+        }
+
+        .section p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .section ul, .section ol {
+            margin-bottom: 15px;
+            padding-left: 25px;
+        }
+
+        .section li {
+            margin-bottom: 8px;
+        }
+
+        .code-block {
+            background: #f4f4f4;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            position: relative;
+        }
+
+        .code-block::before {
+            content: 'JavaScript';
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            background: #667eea;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+
+        .code-block.html::before {
+            content: 'HTML';
+        }
+
+        .code-block.vue::before {
+            content: 'Vue';
+        }
+
+        .highlight {
+            background: #fff3cd;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+
+        .info-box {
+            background: #e7f3ff;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .tip-box {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .flex-demo {
+            background: #f8f9fa;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .flex-container {
+            display: flex;
+            background: #e9ecef;
+            border-radius: 4px;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        .flex-item {
+            background: #667eea;
+            color: white;
+            padding: 10px;
+            margin: 5px;
+            border-radius: 4px;
+            text-align: center;
+            min-width: 80px;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+        .nav-button {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        @media (max-width: 768px) {
+            .article-title {
+                font-size: 2rem;
+            }
+            
+            .article-content {
+                padding: 25px;
+            }
+            
+            .article-meta {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .navigation {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Vue.js 3 Composition API Guide - Article 5",
+        "description": "A comprehensive guide to Vue.js 3 Composition API, covering reactive state, composables, lifecycle hooks, and modern Vue practices for building dynamic web applications.",
+        "author": {
+            "@type": "Organization",
+            "name": "TechInsights"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "TechInsights",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://techinsights.live/images/logo.png"
+            }
+        },
+        "datePublished": "2025-07-14",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http://techinsights.live/web_article5.html"
+        }
+    }
+    </script>
+
+    <div class="container">
+        <div class="article-header">
+            <div class="article-number">Article 5</div>
+            <h1 class="article-title">Vue.js 3 Composition API Guide</h1>
+            <p class="article-subtitle">Master Vue.js 3 Composition API with this guide to reactive state, composables, lifecycle hooks, and best practices for modern web development.</p>
+            <div class="article-meta">
+                <span class="meta-item">📖 20 min read</span>
+                <span class="meta-item difficulty">Intermediate</span>
+                <span class="meta-item">🏷️ Vue.js • Composition API • JavaScript • Reactive Programming • Frontend</span>
+            </div>
+        </div>
+
+        <div class="article-content">
+            <div class="table-of-contents">
+                <h3>📚 Table of Contents</h3>
+                <ul>
+                    <li><a href="#introduction">1. Introduction to Vue.js 3 and Composition API</a></li>
+                    <li><a href="#reactive-state">2. Reactive State</a></li>
+                    <li><a href="#composables">3. Composables</a></li>
+                    <li><a href="#lifecycle-hooks">4. Lifecycle Hooks</a></li>
+                    <li><a href="#refs-vs-reactive">5. Refs vs. Reactive</a></li>
+                    <li><a href="#routing">6. Vue Router</a></li>
+                    <li><a href="#state-management">7. State Management with Pinia</a></li>
+                    <li><a href="#best-practices">8. Best Practices</a></li>
+                    <li><a href="#conclusion">9. Conclusion</a></li>
+                </ul>
+            </div>
+
+            <div class="section" id="introduction">
+                <h2>1. Introduction to Vue.js 3 and Composition API</h2>
+                <p>Vue.js 3 is a progressive JavaScript framework for building user interfaces. The Composition API, introduced in Vue 3, offers a flexible and powerful way to manage component logic, replacing the Options API for more complex applications.</p>
+                
+                <p>The Composition API allows developers to organize code by logical concern, making it easier to reuse and maintain code compared to the Options API.</p>
+
+                <div class="info-box">
+                    <strong>💡 Why Use Composition API?</strong>
+                    <ul>
+                        <li>Better code organization and reusability</li>
+                        <li>Improved TypeScript support</li>
+                        <li>More flexible component logic</li>
+                        <li>Simpler handling of reactive state</li>
+                    </ul>
+                </div>
+
+                <h3>1.1 Composition vs. Options API</h3>
+                <ul>
+                    <li><strong>Options API:</strong> Organized by options (data, methods, computed)</li>
+                    <li><strong>Composition API:</strong> Organized by logical concerns using reactive APIs</li>
+                    <li><strong>Use Case:</strong> Composition API shines in large, complex applications</li>
+                </ul>
+            </div>
+
+            <div class="section" id="reactive-state">
+                <h2>2. Reactive State</h2>
+                <p>The Composition API uses <code>ref</code> and <code>reactive</code> to create reactive state, enabling automatic UI updates when data changes.</p>
+
+                <h3>2.1 Using ref</h3>
+                <p><code>ref</code> creates a reactive reference to a single value.</p>
+                <div class="code-block vue">
+<script setup>
+import { ref } from 'vue';
+
+const count = ref(0);
+
+function increment() {
+    count.value++;
+}
+</script>
+
+<template>
+    <div>
+        <p>Count: {{ count }}</p>
+        <button @click="increment">Increment</button>
+    </div>
+</template>
+                </div>
+
+                <h3>2.2 Using reactive</h3>
+                <p><code>reactive</code> creates a reactive object for complex state.</p>
+                <div class="code-block vue">
+<script setup>
+import { reactive } from 'vue';
+
+const state = reactive({
+    name: 'John',
+    age: 30
+});
+
+function updateName(newName) {
+    state.name = newName;
+}
+</script>
+
+<template>
+    <div>
+        <p>Name: {{ state.name }}</p>
+        <button @click="updateName('Jane')">Update Name</button>
+    </div>
+</template>
+                </div>
+
+                <div class="tip-box">
+                    <strong>💡 Pro Tip:</strong> Use <code>ref</code> for primitive values and <code>reactive</code> for objects to optimize reactivity.
+                </div>
+            </div>
+
+            <div class="section" id="composables">
+                <h2>3. Composables</h2>
+                <p>Composables are reusable functions that encapsulate reactive logic, similar to custom hooks in React.</p>
+
+                <h3>3.1 Creating a Composable</h3>
+                <div class="code-block vue">
+// useCounter.js
+import { ref } from 'vue';
+
+export function useCounter() {
+    const count = ref(0);
+    
+    function increment() {
+        count.value++;
+    }
+    
+    function decrement() {
+        count.value--;
+    }
+    
+    return { count, increment, decrement };
+}
+                </div>
+
+                <h3>3.2 Using a Composable</h3>
+                <div class="code-block vue">
+<script setup>
+import { useCounter } from './useCounter';
+
+const { count, increment, decrement } = useCounter();
+</script>
+
+<template>
+    <div>
+        <p>Count: {{ count }}</p>
+        <button @click="increment">Increment</button>
+        <button @click="decrement">Decrement</button>
+    </div>
+</template>
+                </div>
+            </div>
+
+            <div class="section" id="lifecycle-hooks">
+                <h2>4. Lifecycle Hooks</h2>
+                <p>The Composition API provides lifecycle hooks as functions, offering fine-grained control over component lifecycle.</p>
+
+                <h3>4.1 Common Lifecycle Hooks</h3>
+                <div class="code-block vue">
+<script setup>
+import { onMounted, onUnmounted } from 'vue';
+
+onMounted(() => {
+    console.log('Component mounted');
+});
+
+onUnmounted(() => {
+    console.log('Component unmounted');
+});
+</script>
+
+<template>
+    <div>Hello, Vue!</div>
+</template>
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Note:</strong> Always clean up resources (e.g., timers, event listeners) in <code>onUnmounted</code> to prevent memory leaks.
+                </div>
+            </div>
+
+            <div class="section" id="refs-vs-reactive">
+                <h2>5. Refs vs. Reactive</h2>
+                <p>Choosing between <code>ref</code> and <code>reactive</code> depends on your use case.</p>
+
+                <h3>5.1 When to Use Each</h3>
+                <ul>
+                    <li><strong>ref:</strong> For single values (strings, numbers, booleans)</li>
+                    <li><strong>reactive:</strong> For objects or complex state</li>
+                    <li><strong>Considerations:</strong> <code>ref</code> requires <code>.value</code>, while <code>reactive</code> objects are deeply reactive</li>
+                </ul>
+
+                <div class="code-block vue">
+<script setup>
+import { ref, reactive } from 'vue';
+
+const name = ref('John'); // Single value
+const user = reactive({ name: 'John', age: 30 }); // Object
+
+function update() {
+    name.value = 'Jane'; // Use .value for ref
+    user.age = 31; // Direct property access
+}
+</script>
+                </div>
+            </div>
+
+            <div class="section" id="routing">
+                <h2>6. Vue Router</h2>
+                <p>Vue Router enables client-side routing for Vue.js applications.</p>
+
+                <h3>6.1 Basic Routing</h3>
+                <div class="code-block vue">
+// router.js
+import { createRouter, createWebHistory } from 'vue-router';
+import Home from './views/Home.vue';
+import About from './views/About.vue';
+
+const router = createRouter({
+    history: createWebHistory(),
+    routes: [
+        { path: '/', component: Home },
+        { path: '/about', component: About }
+    ]
+});
+
+export default router;
+                </div>
+
+                <h3>6.2 Navigation</h3>
+                <div class="code-block vue">
+<script setup>
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+
+function goToAbout() {
+    router.push('/about');
+}
+</script>
+
+<template>
+    <nav>
+        <router-link to="/">Home</router-link>
+        <router-link to="/about">About</router-link>
+        <button @click="goToAbout">Go to About</button>
+    </nav>
+    <router-view />
+</template>
+                </div>
+            </div>
+
+            <div class="section" id="state-management">
+                <h2>7. State Management with Pinia</h2>
+                <p>Pinia is the recommended state management library for Vue 3, offering a simpler API than Vuex.</p>
+
+                <h3>7.1 Defining a Store</h3>
+                <div class="code-block vue">
+// store/counter.js
+import { defineStore } from 'pinia';
+
+export const useCounterStore = defineStore('counter', {
+    state: () => ({
+        count: 0
+    }),
+    actions: {
+        increment() {
+            this.count++;
+        }
+    },
+    getters: {
+        doubleCount: (state) => state.count * 2
+    }
+});
+                </div>
+
+                <h3>7.2 Using a Store</h3>
+                <div class="code-block vue">
+<script setup>
+import { useCounterStore } from './store/counter';
+
+const store = useCounterStore();
+</script>
+
+<template>
+    <div>
+        <p>Count: {{ store.count }}</p>
+        <p>Double: {{ store.doubleCount }}</p>
+        <button @click="store.increment">Increment</button>
+    </div>
+</template>
+                </div>
+
+                <div class="info-box">
+                    <strong>💡 Pinia Benefits:</strong> Type-safe, modular, and integrates seamlessly with Vue 3's reactivity system.
+                </div>
+            </div>
+
+            <div class="section" id="best-practices">
+                <h2>8. Best Practices</h2>
+                <p>Follow these guidelines for maintainable and efficient Vue 3 code.</p>
+
+                <h3>8.1 Component Design</h3>
+                <ul>
+                    <li>Use <code>&lt;script setup&gt;</code> for concise syntax</li>
+                    <li>Extract reusable logic into composables</li>
+                    <li>Keep components focused and single-purpose</li>
+                </ul>
+
+                <h3>8.2 Common Pitfalls</h3>
+                <div class="warning-box">
+                    <strong>⚠️ Common Mistakes:</strong>
+                    <ul>
+                        <li>Not unwrapping refs in templates (use <code>{{ count }}</code>, not <code>{{ count.value }}</code>)</li>
+                        <li>Overusing reactive for simple state</li>
+                        <li>Forgetting to clean up side effects in <code>onUnmounted</code></li>
+                        <li>Ignoring TypeScript for large projects</li>
+                    </ul>
+                </div>
+
+                <h3>8.3 Accessibility</h3>
+                <div class="code-block vue">
+<script setup>
+import { ref } from 'vue';
+
+const isOpen = ref(false);
+</script>
+
+<template>
+    <button
+        :aria-expanded="isOpen"
+        aria-controls="menu"
+        @click="isOpen = !isOpen"
+    >
+        Toggle Menu
+    </button>
+    <div v-if="isOpen" id="menu">Menu Content</div>
+</template>
+                </div>
+            </div>
+
+            <div class="section" id="conclusion">
+                <h2>9. Conclusion</h2>
+                <p>Vue.js 3's Composition API revolutionizes how we build Vue applications, offering flexibility, reusability, and better TypeScript integration. By mastering reactive state, composables, and modern tools like Pinia and Vue Router, you can create robust, scalable applications.</p>
+
+                <p>Key takeaways:</p>
+                <ul>
+                    <li>Composition API organizes logic by concern</li>
+                    <li><code>ref</code> and <code>reactive</code> enable reactive state</li>
+                    <li>Composables promote code reuse</li>
+                    <li>Pinia simplifies state management</li>
+                    <li>Vue Router handles client-side navigation</li>
+                </ul>
+
+                <p>Start building Vue 3 apps by experimenting with small projects and integrating with modern tools like Vite and Pinia.</p>
+
+                <div class="info-box">
+                    <strong>🎯 Next Steps:</strong>
+                    <ul>
+                        <li>Build a todo list app with Composition API</li>
+                        <li>Create a custom composable for data fetching</li>
+                        <li>Integrate Pinia with a multi-page Vue Router app</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="navigation">
+                <a href="/web_article4.html" class="nav-button">← Previous Article</a>
+                <a href="/web_article6.html" class="nav-button">Next Article →</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
