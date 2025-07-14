@@ -12,6 +12,11 @@ body {
     color: #333;
     overflow-x: hidden;
 }
+.under_dev{
+    margin:0 auto;
+    margin: left 0;;
+    color:red;
+}
 
 .container {
     max-width: 1200px;
