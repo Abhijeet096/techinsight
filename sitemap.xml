@@ -14,6 +14,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+   
 
   <url>
     <loc>https://techinsights.live/contact</loc>
@@ -22,15 +23,210 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Web dev  total 24 articels -->
+   <!-- Main article index page -->
   <url>
-  <loc>http://techinsights.live/</loc>
-</url>
-<url>
-  <loc>http://techinsights.live/future-of-ai.html</loc>
-</url>
-<url>
-  <loc>http://techinsights.live/ai-tools.html</loc>
-</url>
+    <loc>https://techinsights.live/webdev24arti.html</loc>
+    <lastmod>2025-07-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+<!-- Webdev articel 1 -->
+
+   <url>
+    <loc>https://techinsights.live/web_article1.html</loc>
+    <lastmod>2025-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+<!-- Webdev article 2 -->
+ <url>
+    <loc>https://techinsights.live/web_article2.html</loc>
+    <lastmod>2025-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+<!-- Web dev article 3 -->
+ <url>
+    <loc>https://techinsights.live/web_article3.html</loc>
+    <lastmod>2025-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+<!-- web dev article 4 -->
+
+ <url>
+    <loc>https://techinsights.live/web_article4.html</loc>
+    <lastmod>2025-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+<!-- Web dev article 5 -->
+
+ <url>
+    <loc>https://techinsights.live/web_article5.html</loc>
+    <lastmod>2025-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+<!-- Web dev article 6 -->
+
+ <url>
+    <loc>https://techinsights.live/web_article6.html</loc>
+    <lastmod>2025-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+<!-- web dev article 7 -->
+ <url>
+    <loc>https://techinsights.live/web_article7.html</loc>
+    <lastmod>2025-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+<!-- Webdev article 8 -->
+ <url>
+    <loc>https://techinsights.live/web_article8.html</loc>
+    <lastmod>2025-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+<!-- Web dev article 9 -->
+ <url>
+    <loc>https://techinsights.live/web_article9.html</loc>
+    <lastmod>2025-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+<!-- Web dev article 10 -->
+ <url>
+    <loc>https://techinsights.live/web_article10.html</loc>
+    <lastmod>2025-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+<!-- Web dev article 11 -->
+ <url>
+    <loc>https://techinsights.live/web_article11.html</loc>
+    <lastmod>2025-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+<!-- web dev article 12 -->
+ <url>
+    <loc>https://techinsights.live/web_article2.html</loc>
+    <lastmod>2025-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+<!-- Web dev article 13 -->
+ <url>
+    <loc>https://techinsights.live/web_article13.html</loc>
+    <lastmod>2025-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+<!-- Web dev article 14 -->
+ <url>
+    <loc>https://techinsights.live/web_article14.html</loc>
+    <lastmod>2025-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+<!-- Web dev article 15 -->
+ <url>
+    <loc>https://techinsights.live/web_article15.html</loc>
+    <lastmod>2025-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+<!-- Web dev article 16 -->
+ <url>
+    <loc>https://techinsights.live/web_article16.html</loc>
+    <lastmod>2025-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+<!-- Web dev article 17 -->
+ <url>
+    <loc>https://techinsights.live/web_article17.html</loc>
+    <lastmod>2025-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+<!-- web dev article 18 -->
+ <url>
+    <loc>https://techinsights.live/web_article18.html</loc>
+    <lastmod>2025-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+<!-- Web dev article 19 -->
+ <url>
+    <loc>https://techinsights.live/web_article19.html</loc>
+    <lastmod>2025-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+<!-- web dev article 20 -->
+ <url>
+    <loc>https://techinsights.live/web_article20.html</loc>
+    <lastmod>2025-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+<!-- Web dev article 21 -->
+ <url>
+    <loc>https://techinsights.live/web_article21.html</loc>
+    <lastmod>2025-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+<!-- web dev article 22 -->
+ <url>
+    <loc>https://techinsights.live/web_article22.html</loc>
+    <lastmod>2025-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+<!-- Web dev article 23 -->
+ <url>
+    <loc>https://techinsights.live/web_article23.html</loc>
+    <lastmod>2025-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+<!-- Web dev article 24 -->
+ <url>
+    <loc>https://techinsights.live/web_article24.html</loc>
+    <lastmod>2025-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+
+
 
 </urlset>
-      
+        
