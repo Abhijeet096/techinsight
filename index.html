@@ -2,12 +2,13 @@
 <html lang="en">
 <head>
 
+
      <!-- Script for google adsence add -->
              
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1688587815359544"
      crossorigin="anonymous"></script>
-    
-    <link rel="icon" type="image/png" href="favicon3.jpeg">
+
+    <link rel="icon" type="image/png" href="favicon3.jpeg" loading="lazy" alt = "T">
     <link rel="canonical" href="http://techinsights.live/" />
     <meta name="description" content="Get the latest tech news, trends, and insights with TechInsights.">
     <meta name="keywords" content="tech news, AI, gadgets, tech blog, techinsights">
@@ -17,7 +18,7 @@
     <meta property="og:description" content="Explore top stories in AI, gadgets, software, and more." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://techinsights.live/" />
-    <meta property="og:image" content="https://techinsights.live/assets/og-image.png" />
+    <meta property="og:image" content="https://techinsights.live/assets/og-image.png" loading="lazy"/>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="TechInsights brings you 90+ expert-written articles on web development, AI, mobile apps, cloud computing, data science, and cybersecurity. Discover the future of AI in web development, advanced CSS animations, modern JavaScript, Node.js APIs, and more. Stay ahead in tech with deep insights for developers and learners.">
@@ -68,20 +69,33 @@
             color: white;
             border-color: #667eea;
         }
+       
+
         .load-more-container {
-            text-align: center;
-            margin-top: 3rem;
-        }
-        .load-more-btn {
-            padding: 0.75rem 2rem;
-            background: #1f2937;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: background 0.3s ease;
-        }
+    text-align: center; /* centers inline-block elements like <a> */
+    margin-top: 2rem; /* optional spacing from content above */
+}
+
+.load-more-btn {
+    padding: 0.75rem 2rem;
+    background: #1f2937;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.load-more-btn:hover {
+    background: #374151;
+}
+
+
+
+        
         .load-more-btn:hover {
             background: #374151;
         }
@@ -201,6 +215,7 @@
         .close:hover {
             color: #000;
         }
+        
     </style>
 </head>
 <body>
@@ -433,7 +448,7 @@
                 <p>Try adjusting your search or filter criteria.</p>
             </div>
             <div class="load-more-container">
-                <button class="load-more-btn">Load More Articles</button>
+               <a href="lode_more_articles.html" class="load-more-btn">Load More Articles</a>
             </div>
         </div>
     </section>
@@ -480,6 +495,10 @@
             </div>
         </div>
     </section>
+
+
+    
+
     <section class="newsletter">
         <div class="container">
             <div class="newsletter-content">
