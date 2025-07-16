@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechInsights Blog - All Articles</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8fafc;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 2rem;
+        }
+
+        .article-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .article-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .article-card:hover .article-image {
+            transform: scale(1.05);
+        }
+
+        .article-image {
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            font-weight: bold;
+            color: white;
+            transition: transform 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .article-card:hover .article-image::before {
+            opacity: 1;
+        }
+
+        .article-content {
+            padding: 2rem;
+        }
+
+        .article-category {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 25px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .article-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #1f2937;
+            line-height: 1.4;
+        }
+
+        .article-excerpt {
+            color: #6b7280;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid #e5e7eb;
+            font-size: 0.85rem;
+            color: #9ca3af;
+        }
+
+        .read-more-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+
+        .read-more-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .filter-section {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .filter-btn {
+            background: white;
+            border: 2px solid #e5e7eb;
+            color: #6b7280;
+            padding: 0.7rem 1.5rem;
+            border-radius: 25px;
+            margin: 0 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: #667eea;
+        }
+
+        .search-bar {
+            background: white;
+            border: 2px solid #e5e7eb;
+            padding: 1rem 1.5rem;
+            border-radius: 25px;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto 2rem;
+            display: block;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .search-bar:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            color: #6b7280;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>TechInsights Blog</h1>
+            <p>Stay updated with the latest in technology and development</p>
+        </header>
+
+        <div class="filter-section">
+            <input type="text" class="search-bar" placeholder="Search articles..." id="searchInput">
+            <div>
+                <button class="filter-btn active" onclick="filterArticles('all')">All</button>
+                 <button class="filter-btn active" onclick="filterArticles('Tech News')">Tech News</button>
+                <button class="filter-btn" onclick="filterArticles('AI & Machine Learning')">AI & ML</button>
+                <button class="filter-btn" onclick="filterArticles('JavaScript')">JavaScript</button>
+                <button class="filter-btn" onclick="filterArticles('CSS')">CSS</button>
+                <button class="filter-btn" onclick="filterArticles('Web Development')">Web Dev</button>
+            </div>
+        </div>
+
+        <div class="articles-grid" id="articlesGrid">
+            <!-- Articles will be populated here -->
+        </div>
+
+        <div class="no-results" id="noResults" style="display: none;">
+            <p>No articles found matching your criteria.</p>
+        </div>
+    </div>
+
+    <script>
+        // Sample articles data - in a real implementation, this would come from a database or API
+        const articles = [
+        {
+        id: 1,
+        title: "The Future of AI in Web Development",
+        category: "AI & Machine Learning",
+        excerpt: "Explore how artificial intelligence is revolutionizing web development...",
+        date: "2024-03-15",
+        readTime: "5 min read",
+        author: "Pavan",
+        image: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+        imageText: "AI",
+        filename:  "/public/articles/ai_in_webDevelopment.html"  // Path to the article
+        },
+    // ... more articles
+
+            {
+                id: 2,
+                title: "Modern JavaScript Frameworks Comparison",
+                category: "JavaScript",
+                excerpt: "A comprehensive comparison of React, Vue, and Angular frameworks to help you choose the right tool for your next project.",
+                date: "2024-03-12",
+                readTime: "8 min read",
+                author: "Abhijit Karande",
+                image: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+                imageText: "JS",
+                filename: "/public/articles/2.html"
+            },
+            {
+                id: 3,
+                title: "Advanced CSS Animations and Transitions",
+                category: "CSS",
+                excerpt: "Master the art of creating smooth, professional animations with CSS. Learn about keyframes, transforms, and performance optimization.",
+                date: "2024-03-10",
+                readTime: "6 min read",
+                author: "Mike Johnson",
+                image: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
+                imageText: "CSS",
+                filename: "/public/articles/3.html"
+            },
+            {
+                id: 4,
+                title: "Building Scalable Node.js Applications",
+                category: "Web Development",
+                excerpt: "Learn best practices for building scalable backend applications with Node.js, including microservices architecture and performance optimization.",
+                date: "2024-03-08",
+                readTime: "10 min read",
+                author: "Sarah Wilson",
+                image: "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)",
+                imageText: "NODE",
+                filename: "/public/articles/4.html"
+            },
+            {
+                id: 5,
+                title: "Machine Learning Models in Production",
+                category: "AI & Machine Learning",
+                excerpt: "Discover how to deploy, monitor, and maintain machine learning models in production environments with real-world examples.",
+                date: "2024-03-05",
+                readTime: "12 min read",
+                author: "David Lee",
+                image: "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
+                imageText: "ML",
+                filename: "ml-models-production.html"
+            },
+            {
+                id: 6,
+                title: "Responsive Web Design in 2024",
+                category: "CSS",
+                excerpt: "Modern approaches to responsive design using CSS Grid, Flexbox, and container queries for optimal user experience across devices.",
+                date: "2024-03-03",
+                readTime: "7 min read",
+                author: "Emily Chen",
+                image: "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)",
+                imageText: "RWD",
+                filename: "responsive-web-design-2024.html"
+            },
+
+            {
+                id: 6,
+                title: "Responsive Web Design in 2024",
+                category: "CSS",
+                excerpt: "Modern approaches to responsive design using CSS Grid, Flexbox, and container queries for optimal user experience across devices.",
+                date: "2024-03-03",
+                readTime: "7 min read",
+                author: "Emily Chen",
+                image: "linear-gradient(135deg, #30cfd0 0%, #330867 100%)",
+                imageText: "RWD",
+                filename: "responsive-web-design-2024.html"
+            },
+            {
+                id: 6,
+                title: "Tech News",
+                category: "Tech News",
+                excerpt: "Modern approaches to responsive design using CSS Grid, Flexbox, and container queries for optimal user experience across devices.",
+                date: "2024-03-03",
+                readTime: "7 min read",
+                author: "Emily Chen",
+                image: "linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%)",
+                imageText: "Tech News",
+                filename: "responsive-web-design-2024.html"
+            }
+        ];
+
+        let currentFilter = 'all';
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            renderArticles();
+            setupSearch();
+        });
+
+        function renderArticles(articlesToRender = articles) {
+            const articlesGrid = document.getElementById('articlesGrid');
+            const noResults = document.getElementById('noResults');
+            
+            if (articlesToRender.length === 0) {
+                articlesGrid.style.display = 'none';
+                noResults.style.display = 'block';
+                return;
+            }
+            
+            articlesGrid.style.display = 'grid';
+            noResults.style.display = 'none';
+            
+            articlesGrid.innerHTML = articlesToRender.map(article => `
+                <article class="article-card" onclick="readArticle('${article.filename}')">
+                    <div class="article-image" style="background: ${article.image};">
+                        <span>${article.imageText}</span>
+                    </div>
+                    <div class="article-content">
+                        <span class="article-category">${article.category}</span>
+                        <h2 class="article-title">${article.title}</h2>
+                        <p class="article-excerpt">${article.excerpt}</p>
+                        <div class="article-meta">
+                            <span>${formatDate(article.date)} • ${article.readTime}</span>
+                            <span>By ${article.author}</span>
+                        </div>
+                        <a href="${article.filename}" class="read-more-btn" onclick="event.stopPropagation()">Read More</a>
+                    </div>
+                </article>
+            `).join('');
+        }
+
+        function readArticle(filename) {
+            // Navigate to the specific article page
+            window.location.href = filename;
+        }
+
+        function filterArticles(category) {
+            currentFilter = category;
+            
+            // Update active filter button
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Filter articles
+            const filteredArticles = category === 'all' 
+                ? articles 
+                : articles.filter(article => article.category === category);
+            
+            renderArticles(filteredArticles);
+        }
+
+        function setupSearch() {
+            const searchInput = document.getElementById('searchInput');
+            searchInput.addEventListener('input', function(e) {
+                const searchTerm = e.target.value.toLowerCase();
+                
+                let filteredArticles = currentFilter === 'all' 
+                    ? articles 
+                    : articles.filter(article => article.category === currentFilter);
+                
+                if (searchTerm) {
+                    filteredArticles = filteredArticles.filter(article => 
+                        article.title.toLowerCase().includes(searchTerm) ||
+                        article.excerpt.toLowerCase().includes(searchTerm) ||
+                        article.category.toLowerCase().includes(searchTerm)
+                    );
+                }
+                
+                renderArticles(filteredArticles);
+            });
+        }
+
+        function formatDate(dateString) {
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return new Date(dateString).toLocaleDateString(undefined, options);
+        }
+    </script>
+</body>
+</html>
