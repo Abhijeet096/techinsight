@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breaking Tech News July 2025: AI Breakthroughs, Smart Gadgets & Industry Updates - TechInsights Blog</title>
+    <meta name="description" content="Latest technology news July 2025: AI developments, breakthrough gadgets, industry updates, and emerging tech trends. Stay informed with today's top tech stories.">
+    <meta name="keywords" content="tech news 2025, AI news, latest technology, tech updates, artificial intelligence, gadgets, tech trends, breaking tech news">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .back-link:hover {
+            color: white;
+            transform: translateX(-8px) scale(1.05);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .back-link::before {
+            content: "← ";
+            margin-right: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .article-header {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            padding: 4rem 3rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .article-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 50%, #667eea 100%);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { transform: translateX(-100%); }
+            50% { transform: translateX(100%); }
+        }
+
+        .article-category {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+            color: white;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-category::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .article-category:hover::before {
+            left: 100%;
+        }
+
+        .article-title {
+            font-size: 3.2rem;
+            font-weight: 800;
+            color: #1a202c;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .article-excerpt {
+            font-size: 1.3rem;
+            color: #4a5568;
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
+            font-weight: 400;
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 2rem;
+            border-top: 2px solid #e2e8f0;
+            font-size: 1rem;
+            color: #718096;
+            font-weight: 500;
+        }
+
+        .article-hero {
+            height: 400px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .article-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(255,255,255,0.2) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(255,255,255,0.15) 0%, transparent 50%);
+            animation: floatingBubbles 8s ease-in-out infinite;
+        }
+
+        @keyframes floatingBubbles {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-10px) rotate(120deg); }
+            66% { transform: translateY(5px) rotate(240deg); }
+        }
+
+        .article-hero-text {
+            font-size: 5rem;
+            font-weight: 900;
+            color: white;
+            z-index: 1;
+            text-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: heroFloat 4s ease-in-out infinite;
+            position: relative;
+        }
+
+        @keyframes heroFloat {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-15px) scale(1.05); }
+        }
+
+        .article-content {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            padding: 4rem 3rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            margin-bottom: 3rem;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .article-content h2 {
+            font-size: 2.2rem;
+            color: #1a202c;
+            margin: 3rem 0 1.5rem 0;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .article-content h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 2px;
+        }
+
+        .article-content h3 {
+            font-size: 1.6rem;
+            color: #2d3748;
+            margin: 2rem 0 1.2rem 0;
+            font-weight: 600;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .article-content h3::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+        }
+
+        .article-content p {
+            margin-bottom: 1.8rem;
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: #4a5568;
+            text-align: justify;
+        }
+
+        .article-content ul, .article-content ol {
+            margin: 2rem 0;
+            padding-left: 2.5rem;
+        }
+
+        .article-content li {
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+
+        .article-content li::marker {
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .news-highlight {
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.1) 0%, rgba(238, 90, 36, 0.1) 100%);
+            border-left: 5px solid #ff6b6b;
+            padding: 2rem;
+            margin: 3rem 0;
+            border-radius: 0 15px 15px 0;
+            position: relative;
+            font-size: 1.2rem;
+        }
+
+        .news-highlight::before {
+            content: '🚀';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            font-size: 2rem;
+        }
+
+        .breaking-news {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 3rem 0;
+            position: relative;
+            overflow: hidden;
+            animation: pulse 2s infinite;
+        }
+
+        .breaking-news::before {
+            content: '🔥';
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 2rem;
+            opacity: 0.8;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        .breaking-news h4 {
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .tech-trend-box {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%);
+            border: 2px solid rgba(102, 126, 234, 0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 3rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tech-trend-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .tech-trend-box h4 {
+            color: #667eea;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .ai-showcase {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            margin: 3rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ai-showcase::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 30% 40%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 60%, rgba(255,255,255,0.08) 0%, transparent 50%);
+            animation: aiPulse 6s ease-in-out infinite;
+        }
+
+        @keyframes aiPulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .ai-showcase h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            z-index: 1;
+            position: relative;
+        }
+
+        .ai-showcase p {
+            font-size: 1.1rem;
+            z-index: 1;
+            position: relative;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .news-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .news-card h4 {
+            color: #1a202c;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .news-card .date {
+            color: #718096;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .share-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            padding: 3rem;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .share-section h3 {
+            margin-bottom: 2rem;
+            color: #1a202c;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .share-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .share-btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .share-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .share-btn:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .share-btn:hover::before {
+            left: 100%;
+        }
+
+        .share-btn.twitter {
+            background: linear-gradient(135deg, #1da1f2 0%, #0d8bd9 100%);
+            color: white;
+        }
+
+        .share-btn.linkedin {
+            background: linear-gradient(135deg, #0077b5 0%, #005885 100%);
+            color: white;
+        }
+
+        .share-btn.facebook {
+            background: linear-gradient(135deg, #1877f2 0%, #0d5edb 100%);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .article-title {
+                font-size: 2.5rem;
+            }
+            
+            .article-header, .article-content {
+                padding: 2rem;
+            }
+            
+            .article-hero {
+                height: 250px;
+            }
+            
+            .article-hero-text {
+                font-size: 3.5rem;
+            }
+            
+            .share-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../load_more_articles.html" class="back-link">Back to Articles</a>
+        
+        <header class="article-header">
+            <span class="article-category">Breaking Tech News</span>
+            <h1 class="article-title">Latest Tech News July 2025: AI Breakthroughs & Industry Updates</h1>
+            <p class="article-excerpt">Stay ahead of the curve with today's most important technology news, featuring groundbreaking AI developments, industry partnerships, and emerging tech trends that are shaping the future.</p>
+            <div class="article-meta">
+                <span>July 17, 2025 • 12 min read</span>
+                <span>By Tech News Team</span>
+            </div>
+        </header>
+
+        <div class="article-hero">
+            <span class="article-hero-text">NEWS</span>
+        </div>
+
+        <main class="article-content">
+            <div class="breaking-news">
+                <h4>Breaking: Major AI Developments This Week</h4>
+                <p>Microsoft partners with Elon Musk's xAI to host Grok AI on Azure cloud platform, while Google unveils AlphaGenome for advanced DNA sequence analysis. These partnerships are reshaping the AI landscape with unprecedented collaboration between tech giants.</p>
+            </div>
+
+            <p>The technology industry continues to evolve at breakneck speed in July 2025, with artificial intelligence leading the charge in innovation and disruption. From revolutionary AI partnerships to breakthrough healthcare applications, today's tech news highlights the transformative power of emerging technologies.</p>
+
+            <h2>🤖 AI Revolution: Game-Changing Developments</h2>
+            
+            <div class="ai-showcase">
+                <h3>Microsoft-xAI Partnership Transforms Cloud Computing</h3>
+                <p>Microsoft's Azure cloud platform will now host Elon Musk's Grok AI model, marking a significant shift in AI industry dynamics and opening new possibilities for enterprise AI deployment.</p>
+            </div>
+
+            <p>The artificial intelligence sector witnessed unprecedented collaboration this week as major tech companies forge strategic partnerships to accelerate AI development and deployment. These alliances are reshaping how AI technologies reach consumers and businesses worldwide.</p>
+
+            <h3>Google's AlphaGenome: Revolutionizing Healthcare</h3>
+            <p>Google's latest AI breakthrough, AlphaGenome, represents a quantum leap in genomic research. This unifying DNA sequence model promises to advance regulatory variant-effect prediction and unlock new insights into genome function, potentially revolutionizing personalized medicine and disease prevention.</p>
+
+            <div class="news-highlight">
+                <strong>Key Features of AlphaGenome:</strong><br>
+                • Advanced regulatory variant-effect prediction<br>
+                • Comprehensive genome function analysis<br>
+                • Open preview access for scientific research<br>
+                • Integration with existing healthcare systems
+            </div>
+
+            <h3>FDA Launches "Elsa" - First In-House AI System</h3>
+            <p>The U.S. Food and Drug Administration has introduced its first internal AI system, a large language model named "Elsa." This groundbreaking system is designed to summarize adverse drug event reports, compare product labels, and generate computer code for drug data analysis, streamlining regulatory processes and improving patient safety.</p>
+
+            <h2>🚀 Industry Partnerships & Strategic Moves</h2>
+            
+            <div class="news-grid">
+                <div class="news-card">
+                    <div class="date">July 15, 2025</div>
+                    <h4>OpenAI Expands Globally with UAE Partnership</h4>
+                    <p>OpenAI partners with the United Arab Emirates to build the first international deployment of its massive Stargate AI infrastructure platform, marking a significant expansion into the Middle East market.</p>
+                </div>
+                
+                <div class="news-card">
+                    <div class="date">July 14, 2025</div>
+                    <h4>NVIDIA Powers Humanoid Robot Revolution</h4>
+                    <p>NVIDIA announces comprehensive cloud-to-robot computing platforms for physical AI, accelerating the development of humanoid robots across industries from manufacturing to healthcare.</p>
+                </div>
+                
+                <div class="news-card">
+                    <div class="date">July 13, 2025</div>
+                    <h4>GitHub Copilot Becomes AI Coding Agent</h4>
+                    <p>GitHub transforms Copilot into a comprehensive AI coding agent, expanding beyond code suggestions to include debugging, feature implementation, and code refactoring capabilities.</p>
+                </div>
+            </div>
+
+            <h2>💡 Emerging Tech Trends & Innovations</h2>
+            
+            <div class="tech-trend-box">
+                <h4>Android XR: The Future of Wearable AI</h4>
+                <p>Google previews Android XR to bring Gemini AI to glasses and headsets, creating more natural AI experiences as users navigate the world. These smart glasses feature cameras, microphones, and speakers that work seamlessly with smartphones.</p>
+            </div>
+
+            <h3>Small Language Models: The Next Big Thing</h3>
+            <p>Industry experts predict that small language models will become increasingly important in 2025, offering more efficient and specialized AI solutions for specific use cases. These compact models provide faster processing times and reduced computational requirements while maintaining high accuracy.</p>
+
+            <h3>AI Agents Transform Software Development</h3>
+            <p>The rise of AI agents is revolutionizing how software is developed and deployed. From automated code generation to intelligent debugging, these systems are becoming indispensable tools for developers worldwide, promising to accelerate innovation and improve code quality.</p>
+
+            <div class="news-highlight">
+                <strong>Key AI Agent Capabilities:</strong><br>
+                • Automated code generation and optimization<br>
+                • Intelligent debugging and error detection<br>
+                • Feature implementation assistance<br>
+                • Code refactoring and improvement suggestions
+            </div>
+
+            <h2>🔬 Healthcare & Biotech Breakthroughs</h2>
+            
+            <p>The intersection of AI and healthcare continues to yield remarkable breakthroughs. Beyond Google's AlphaGenome, researchers are developing AI systems that can predict disease onset, optimize treatment plans, and accelerate drug discovery processes.</p>
+
+            <h3>AI-Powered Drug Discovery</h3>
+            <p>Pharmaceutical companies are increasingly relying on AI to identify potential drug compounds and predict their effectiveness. This approach significantly reduces the time and cost associated with traditional drug development processes, potentially bringing life-saving treatments to market faster.</p>
+
+            <div class="breaking-news">
+                <h4>Market Impact</h4>
+                <p>The global AI healthcare market is projected to reach $45 billion by the end of 2025, driven by increasing adoption of AI-powered diagnostic tools and treatment optimization systems.</p>
+            </div>
+
+            <h2>🌐 Global Technology Regulations</h2>
+            
+            <p>As AI technologies become more prevalent, governments worldwide are implementing new regulations to ensure ethical development and deployment. These regulatory frameworks aim to balance innovation with safety and privacy concerns.</p>
+
+            <h3>European AI Act Implementation</h3>
+            <p>The European Union's AI Act continues to shape how AI companies operate globally, with new compliance requirements taking effect this quarter. Companies must now demonstrate transparency in their AI systems and provide detailed risk assessments for high-risk applications.</p>
+
+            <h3>US AI Safety Standards</h3>
+            <p>The United States is developing comprehensive AI safety standards that will govern the development and deployment of AI systems across critical sectors including healthcare, finance, and transportation.</p>
+
+            <div class="tech-trend-box">
+                <h4>What This Means for Consumers</h4>
+                <p>These regulatory developments ensure that AI technologies are developed with user safety and privacy in mind, leading to more trustworthy and reliable AI applications in everyday life.</p>
+            </div>
+
+            <h2>🎯 Looking Ahead: Future Predictions</h2>
+            
+            <p>As we progress through 2025, several key trends are expected to dominate the technology landscape:</p>
+
+            <ul>
+                <li><strong>Increased AI Integration:</strong> AI will become more deeply integrated into everyday applications, from smart home devices to professional software tools.</li>
+                <li><strong>Enhanced Human-AI Collaboration:</strong> The focus will shift from AI replacing humans to AI augmenting human capabilities across various industries.</li>
+                <li><strong>Sustainable Technology:</strong> Environmental considerations will drive innovation in energy-efficient AI systems and sustainable manufacturing processes.</li>
+                <li><strong>Quantum Computing Advances:</strong> Quantum computing will begin to show practical applications in cryptography, optimization, and scientific research.</li>
+            </ul>
+
+            <div class="ai-showcase">
+                <h3>The Future is Now</h3>
+                <p>With these rapid developments in AI and emerging technologies, we're witnessing a transformation that will define the next decade of innovation. Stay tuned for more groundbreaking news as technology continues to reshape our world.</p>
+            </div>
+
+            <p>The technology industry's rapid evolution continues to present both opportunities and challenges. As AI becomes more sophisticated and accessible, its impact on society, business, and daily life will only grow. Companies that embrace these changes while maintaining ethical standards will be best positioned for success in this new technological era.</p>
+
+            <p>From healthcare breakthroughs to industry partnerships, today's tech news demonstrates the incredible pace of innovation in 2025. As we move forward, the convergence of AI, cloud computing, and emerging technologies will continue to create unprecedented opportunities for growth and innovation.</p>
+        </main>
+
+        <div class="share-section">
+            <h3>Share This Article</h3>
+            <p>Stay informed about the latest technology trends and developments</p>
+            <div class="share-buttons">
+                <a href="#" class="share-btn twitter">Share on Twitter</a>
+                <a href="#" class="share-btn linkedin">Share on LinkedIn</a>
+                <a href="#" class="share-btn facebook">Share on Facebook</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add some interactivity to the news cards
+        document.querySelectorAll('.news-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Add click animation to share buttons
+        document.querySelectorAll('.share-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = 'translateY(-4px) scale(1.05)';
+                }, 150);
+            });
+        });
+
+        // Add smooth scrolling for better user experience
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
