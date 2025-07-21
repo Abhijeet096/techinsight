@@ -11,6 +11,16 @@
             color: #333;
             background: #f8fafc;
         }
+        
+        
+        .home{
+            color:white;
+            text-decoration:none;
+        }
+        .home:hover{
+             transform: scale(1.05);
+             text-decoration:none;
+        }
 
         .container {
             max-width: 1200px;
